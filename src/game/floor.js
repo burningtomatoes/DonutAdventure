@@ -1,7 +1,7 @@
 var Floor = Class.extend({
     spriteFloor: null,
     spriteWallsSide: null,
-    spriteWallsSideWidth: 24,
+    spriteWallsSideWidth: 16,
 
     y: 0,
 
@@ -14,7 +14,7 @@ var Floor = Class.extend({
         this.y += Map.velocity;
 
         if (this.y >= Renderer.canvas.height) {
-            this.y = 0;
+            this.y -= Renderer.canvas.height;
         }
     },
 
