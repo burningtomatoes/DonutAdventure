@@ -1,6 +1,7 @@
 var Map = {
     entities: [],
     velocity: 0,
+    scanlinesSprite: null,
 
     add: function(e) {
         this.entities.push(e);
@@ -34,6 +35,11 @@ var Map = {
             var e = this.entities[i];
             e.draw(ctx);
         }
+
+        // Scanlines effect
+        if (this.scanlinesSprite != null) {
+            ctx.drawImage(this.scanlinesSprite, 0, 0, Renderer.canvas.width, Renderer.canvas.height, 0, 0, Renderer.canvas.width, Renderer.canvas.height);
+        }
     },
 
     startingGame: false,
@@ -45,11 +51,15 @@ var Map = {
 
         this.startingGame = true;
 
+        if (this.scanlinesSprite == null) {
+            this.scanlinesSprite = Sprites.load('scanlines');
+        }
+
         var startGame = function() {
             this.clear();
             this.add(new Floor());
             this.add(new Player());
-            this.velocity = 1;
+            this.velocity = 2;
 
             Renderer.$canvas.delay(100).fadeIn('slow');
             this.startingGame = false;

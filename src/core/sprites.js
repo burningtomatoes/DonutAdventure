@@ -21,5 +21,6 @@ var Sprites = {
         this.load('floor');
         this.load('shadow');
         this.load('player');
+        this.load('brickwall_side');
     }
 };
