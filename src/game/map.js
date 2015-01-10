@@ -1,6 +1,6 @@
 var Map = {
     entities: [],
-    velocity: 0,
+    velocity: 3,
     scanlinesSprite: null,
 
     add: function(e) {
@@ -25,6 +25,16 @@ var Map = {
         for (var i = 0; i < entities; i++) {
             var e = this.entities[i];
             e.update();
+        }
+
+        // Spawn random donuts
+        if (Math.random() >= 0.99) {
+            var donut = new Pickup();
+            donut.posX = MathHelper.clamp(Math.round(Math.random() * Renderer.canvas.width), 16, Renderer.canvas.width - 16 - donut.width);
+            donut.posY = -donut.height;
+            this.add(donut);
+
+            console.log('Add donut.', donut.getPosition());
         }
     },
 
@@ -59,7 +69,6 @@ var Map = {
             this.clear();
             this.add(new Floor());
             this.add(new Player());
-            this.velocity = 3;
 
             Renderer.$canvas.delay(100).fadeIn('slow');
             this.startingGame = false;

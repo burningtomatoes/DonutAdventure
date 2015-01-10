@@ -24,5 +24,9 @@ var Entity = Class.extend({
 
     draw: function(ctx) {
         // ...
+    },
+
+    isOutOfScreen: function() {
+        return this.posY >= Renderer.canvas.height;
     }
 });

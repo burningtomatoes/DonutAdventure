@@ -12,15 +12,17 @@ var Sprites = {
             this.data[fileName] = new Image();
             this.data[fileName].src = fileName;
             console.info('[Sprites] Loaded sprite', fileName);
-        }
+}
 
-        return this.data[fileName];
-    },
+return this.data[fileName];
+},
 
-    preload: function() {
-        this.load('floor');
-        this.load('shadow');
-        this.load('player');
-        this.load('brickwall_side');
-    }
+preload: function() {
+    this.load('floor');
+    this.load('shadow');
+    this.load('shadow_pickup');
+    this.load('player');
+    this.load('brickwall_side');
+    this.load('donut');
+}
 };
