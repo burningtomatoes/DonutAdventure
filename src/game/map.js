@@ -59,7 +59,7 @@ var Map = {
             this.clear();
             this.add(new Floor());
             this.add(new Player());
-            this.velocity = 2;
+            this.velocity = 3;
 
             Renderer.$canvas.delay(100).fadeIn('slow');
             this.startingGame = false;

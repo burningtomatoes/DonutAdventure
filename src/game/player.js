@@ -22,6 +22,14 @@ var Player = Entity.extend({
             this.movementBob = this.movementBob == intensity ? -intensity : intensity;
             this.movementBobTimer = 0;
         }
+
+        if (Keyboard.isKeyDown(KeyEvent.DOM_VK_LEFT) && this.posX > 16) {
+            this.posX -= Map.velocity;
+        }
+
+        if (Keyboard.isKeyDown(KeyEvent.DOM_VK_RIGHT) && this.posX < Renderer.canvas.width - 16 - this.width) {
+            this.posX += Map.velocity;
+        }
     },
 
     draw: function(ctx) {
