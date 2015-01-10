@@ -5,11 +5,15 @@ $(document).ready(function() {
         return;
     }
 
+    Renderer.start();
+
     Keyboard.bind();
     Mouse.bind();
+
+    Sprites.preload();
     Sfx.preload();
 
-    Renderer.start();
+    Map.newGame();
 });
 
 function isCanvasSupported(){

@@ -46,6 +46,7 @@ var Renderer = {
     update: function() {
         Camera.update();
         Keyboard.update();
+        Map.update();
     },
 
     /**
@@ -53,11 +54,8 @@ var Renderer = {
      * This function is responsible for drawing everything, based on the states set in the update function.
      */
     draw: function() {
-        // Clear the screen with a changing gradient because we're cool like that
-        var grad = Renderer.context.createLinearGradient(0, 0, 0, Renderer.canvas.height);
-        grad.addColorStop(0, "#fff");
-        grad.addColorStop(1, "#ddd");
-        Renderer.context.fillStyle = grad;
-        Renderer.context.fillRect(0, 0, Renderer.canvas.width, Renderer.canvas.height);
+        Map.draw(this.context);
+        // Scanlines
+        this.context.drawImage(Sprites.load('scanlines'), 0, 0, this.canvas.width, this.canvas.height, 0, 0, this.canvas.width, this.canvas.height);
     }
 };

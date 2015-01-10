@@ -21,8 +21,8 @@ var Camera = {
 
     translateObject: function(obj) {
         return {
-            x: Camera.translateX(obj.x),
-            y: Camera.translateY(obj.y)
+            x: Camera.translateX(obj.posX),
+            y: Camera.translateY(obj.posY)
         };
     },
 
@@ -50,11 +50,11 @@ var Camera = {
         }
 
         if (this.trackingEntity != null) {
-            Camera.x = -(this.trackingEntity.position.x - (Renderer.canvas.width / 2));
-            Camera.y = -(this.trackingEntity.position.y - (Renderer.canvas.height / 2));
+            Camera.posX = -(this.trackingEntity.position.posX - (Renderer.canvas.width / 2));
+            Camera.posY = -(this.trackingEntity.position.posY - (Renderer.canvas.height / 2));
         }
 
-        Camera.smoothedX = MathHelper.lerp(Camera.smoothedX, Camera.x, 0.1);
-        Camera.smoothedY = MathHelper.lerp(Camera.smoothedY, Camera.y, 0.1);
+        Camera.smoothedX = MathHelper.lerp(Camera.smoothedX, Camera.posX, 0.1);
+        Camera.smoothedY = MathHelper.lerp(Camera.smoothedY, Camera.posY, 0.1);
     }
 };
