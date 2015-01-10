@@ -7,6 +7,9 @@ var Renderer = {
     canvas: null,
     context: null,
 
+    lastRenderTime: null,
+    fps: 0,
+
     /**
      * Binds to the canvas element on the page, configures it and begins the update/render loop.
      * NB: This function should normally only be called once (when the game is starting).
@@ -34,9 +37,26 @@ var Renderer = {
 
             Renderer.update();
             Renderer.draw();
-        };
+
+            if (this.lastRenderTime == null) {
+                this.lastRenderTime = Date.now();
+                this.fps = 0;
+            } else {
+                var delta = (new Date().getTime() - this.lastRenderTime) / 1000;
+                this.lastRenderTime = Date.now();
+                this.fps = 1/delta;
+            }
+        }.bind(this);
 
         loop();
+
+        var updateFps = function() {
+            var $fps = $('#fps');
+            $fps.text(this.fps.toFixed(0));
+            $fps.removeClass().addClass(this.fps >= 30 ? 'ok' : 'slow');
+        }.bind(this);
+
+        window.setInterval(updateFps, 1000);
     },
 
     /**
@@ -55,7 +75,5 @@ var Renderer = {
      */
     draw: function() {
         Map.draw(this.context);
-        // Scanlines
-        this.context.drawImage(Sprites.load('scanlines'), 0, 0, this.canvas.width, this.canvas.height, 0, 0, this.canvas.width, this.canvas.height);
     }
 };
