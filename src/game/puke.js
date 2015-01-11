@@ -9,6 +9,7 @@ var Puke = Entity.extend({
 
     update: function() {
         this.pukeAnim.update();
+        this.posY += Map.velocity;
     },
 
     onPickup: function(player) {
