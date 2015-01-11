@@ -7,6 +7,9 @@ var Player = Entity.extend({
 
     isPlayer: true,
 
+    burpBuildup: 0,
+    omnomTimer: 0,
+
     init: function() {
         this.spriteBody = Sprites.load('player'); // TODO Draw my own sprite, temporary filler
         this.spriteShadow = Sprites.load('shadow');
@@ -17,7 +20,14 @@ var Player = Entity.extend({
     },
 
     pickUp: function(object) {
-        console.log('pick up', object);
+        if (object.isDonut) {
+            Sfx.pickupDonut();
+
+            this.burpBuildup++;
+            this.omnomTimer = 10;
+        }
+
+
         Map.remove(object);
     },
 
@@ -26,13 +36,32 @@ var Player = Entity.extend({
         this.movementBobTimer++;
 
         if (this.movementBobTimer > 10) {
-            var intensity = 2;
-            this.movementBob = this.movementBob == intensity ? -intensity : intensity;
+            if (Map.velocity > 0) {
+                var intensity = 2;
+                this.movementBob = this.movementBob == intensity ? -intensity : intensity;
+            } else {
+                this.movementBob = 0;
+            }
             this.movementBobTimer = 0;
         }
 
+        /** Eating sounds **/
+        if (this.omnomTimer > 0) {
+            this.omnomTimer--;
+
+            if (this.omnomTimer <= 0) {
+                if (this.burpBuildup > 3) {
+                    Sfx.burp();
+                    this.burpBuildup = 0;
+                } else {
+                    Sfx.omNom();
+                }
+            }
+
+        }
+
         /** Check collisions **/
-        var entities = Map.checkCollisions.bind(Map)(this);
+        var entities = Map.checkCollisions(this);
         var entitiesLength = entities.length;
 
         for (var i = 0; i < entitiesLength; i++) {

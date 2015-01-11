@@ -3,6 +3,7 @@ var Pickup = Entity.extend({
     spriteShadow: null,
 
     isPickup: true,
+    isDonut: true,
 
     init: function() {
         this.spritePickup = Sprites.load('donut');

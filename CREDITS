@@ -1,13 +1,31 @@
 "Donut Adventure"
 Copyright (c) 2015, Roy de Jong
 
+### TECH ###
 
 Game design & development:
     by Roy de Jong
     http://wwww.burningtomato.com
     Licensed under the MIT License
 
+### GFX ###
+
 "Munro" font:
     by tenbytwenty.com
     http://tenbytwenty.com/
 
+### SFX ###
+
+"Eating" sound effect:
+    by orignaljun
+    http://freesound.org/people/orginaljun/sounds/152313/
+    http://orginaljun.deviantart.com
+    License: CC BY 3.0
+
+"Burp" sound effect:
+    by Taira Komori
+    http://freesound.org/people/Taira%20Komori/sounds/213054/
+    http://taira-komori.jpn.org
+    License: CC BY 3.0
+
+Additional sound effects were produced using the Bfxr software.

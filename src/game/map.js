@@ -1,8 +1,8 @@
 var Map = {
     entities: [],
-    velocity: 1,
+    velocity: 3,
     scanlinesSprite: null,
-    debugCollisions: true,
+    debugCollisions: false,
 
     add: function(e) {
         this.entities.push(e);
