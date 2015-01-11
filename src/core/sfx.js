@@ -3,6 +3,7 @@ var Sfx = {
 
     preload: function() {
         this.load('pickup_donut');
+        this.load('pickup_veggie');
         this.load('omnom');
         this.load('burp');
         this.load('running');
@@ -26,6 +27,7 @@ var Sfx = {
     },
 
     pickupDonut: function ()    { this.play('pickup_donut'); },
+    pickupVeggie: function ()   { this.play('pickup_veggie'); },
     omNom: function()           { this.play('omnom'); },
     burp: function()            { this.play('burp'); }
 };

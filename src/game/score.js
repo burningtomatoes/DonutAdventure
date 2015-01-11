@@ -1,6 +1,7 @@
 var Score = {
     current: 0,
     donuts: 0,
+    veggie: 0,
 
     init: function() {
         window.setInterval(this.updateUi.bind(this), 250);
@@ -34,7 +35,14 @@ var Score = {
         this.addScore(100);
     },
 
+    addVeggie: function() {
+        this.veggie++;
+        this.addScore(-250);
+    },
+
     reset: function() {
         this.current = 0;
+        this.donuts = 0;
+        this.veggie = 0;
     }
 };

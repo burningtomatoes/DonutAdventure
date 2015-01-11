@@ -22,20 +22,6 @@ var Player = Entity.extend({
         this.sfxRunning = Sfx.load('running');
     },
 
-    pickUp: function(object) {
-        if (object.isDonut) {
-            Sfx.pickupDonut();
-
-            this.burpBuildup++;
-            this.omnomTimer = 10;
-
-            Score.addDonut();
-        }
-
-
-        Map.remove(object);
-    },
-
     update: function() {
         /** Movement bob (shift left and right to fake the look of movement) **/
         this.movementBobTimer++;
@@ -73,7 +59,7 @@ var Player = Entity.extend({
             var e = entities[i];
 
             if (e.isPickup) {
-                this.pickUp(e);
+                e.onPickup(this);
             }
         }
 

@@ -4,10 +4,9 @@ var Pickup = Entity.extend({
 
     isPickup: true,
     isDonut: true,
+    isCarrot: false,
 
     init: function() {
-        this.spritePickup = Sprites.load('donut');
-        this.spriteShadow = Sprites.load('shadow_pickup');
         this.height = 32;
         this.width = 32;
     },
@@ -19,6 +18,10 @@ var Pickup = Entity.extend({
             Map.remove(this);
             return;
         }
+    },
+
+    onPickup: function(player) {
+        Map.remove(this);
     },
 
     draw: function(ctx) {
