@@ -11,9 +11,15 @@ var Sfx = {
     },
 
     load: function(soundId) {
+        if (typeof Sfx.sounds[soundId] != 'undefined') {
+            return Sfx.sounds[soundId];
+        }
+
         console.info('[SFX] Loading sound effect', soundId);
+
         Sfx.sounds[soundId] = new Audio('assets/sfx/' + soundId + '.wav');
         Sfx.sounds[soundId].load();
+
         return Sfx.sounds[soundId];
     },
 
