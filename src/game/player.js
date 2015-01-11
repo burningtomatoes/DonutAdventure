@@ -87,6 +87,15 @@ var Player = Entity.extend({
         }
     },
 
+    puke: function() {
+        Sfx.puke();
+
+        var spillage = new Puke();
+        spillage.posX = this.posX;
+        spillage.posY = this.posY - 24;
+        Map.add(spillage);
+    },
+
     draw: function(ctx) {
         ctx.drawImage(this.spriteShadow, 0, 0, this.width, this.height, this.posX, this.posY + 5, this.width, this.height);
         ctx.drawImage(this.spriteBody, 0, 0, this.width, this.height, this.posX + this.movementBob, this.posY, this.width, this.height);

@@ -68,7 +68,7 @@ var Score = {
         this.addScore(-250);
 
         if (this.veggie >= 5 && !this.isGameOver) {
-            Sfx.puke();
+            Map.player.puke();
             this.gameOver("Watch out for your five a day! It keeps the doctor away!<br />(That's not what we want)");
         }
     },
