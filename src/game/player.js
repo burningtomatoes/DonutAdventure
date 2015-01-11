@@ -10,6 +10,8 @@ var Player = Entity.extend({
     burpBuildup: 0,
     omnomTimer: 0,
 
+    sfxRunning: null,
+
     init: function() {
         this.spriteBody = Sprites.load('player'); // TODO Draw my own sprite, temporary filler
         this.spriteShadow = Sprites.load('shadow');
@@ -17,6 +19,7 @@ var Player = Entity.extend({
         this.width = 66;
         this.posX = (Renderer.canvas.width / 2) - (this.width / 2);
         this.posY = Renderer.canvas.height - (this.height * 2);
+        this.sfxRunning = Sfx.load('running');
     },
 
     pickUp: function(object) {
@@ -79,6 +82,20 @@ var Player = Entity.extend({
 
         if (Keyboard.isKeyDown(KeyEvent.DOM_VK_RIGHT) && this.posX < Renderer.canvas.width - 16 - this.width) {
             this.posX += Map.velocity * 2;
+        }
+
+        /** Running sfx **/
+        if (Map.velocity == 0) {
+            if (!this.sfxRunning.ended) {
+                this.sfxRunning.pause();
+                this.sfxRunning.currentTime = 0;
+            }
+        } else {
+            if (!this.sfxRunning.ended) {
+                this.sfxRunning.play();
+                this.sfxRunning.volume = 0.5;
+                this.sfxRunning.loop = true;
+            }
         }
     },
 
