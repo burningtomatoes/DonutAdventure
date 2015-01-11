@@ -1,7 +1,8 @@
 var Map = {
     entities: [],
-    velocity: 3,
+    velocity: 1,
     scanlinesSprite: null,
+    debugCollisions: true,
 
     add: function(e) {
         this.entities.push(e);
@@ -24,6 +25,11 @@ var Map = {
 
         for (var i = 0; i < entities; i++) {
             var e = this.entities[i];
+
+            if (e == null) {
+                continue;
+            }
+
             e.update();
         }
 
@@ -44,12 +50,43 @@ var Map = {
         for (var i = 0; i < entities; i++) {
             var e = this.entities[i];
             e.draw(ctx);
+
+            if (this.debugCollisions && e.getRect) {
+                var sq = e.getRect();
+
+                ctx.beginPath();
+                ctx.rect(sq.left, sq.top, sq.width, sq.height);
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = 'red';
+                ctx.stroke();
+            }
         }
 
         // Scanlines effect
         if (this.scanlinesSprite != null) {
             ctx.drawImage(this.scanlinesSprite, 0, 0, Renderer.canvas.width, Renderer.canvas.height, 0, 0, Renderer.canvas.width, Renderer.canvas.height);
         }
+    },
+
+    checkCollisions: function(object) {
+        var entities = this.entities.length;
+        var collisions = [];
+
+        var ourRect = object.getRect();
+
+        for (var i = 0; i < entities; i++) {
+            var e = this.entities[i];
+
+            if (typeof e == 'undefined' || !e.causesCollision) {
+                continue;
+            }
+
+            if (Utils.rectIntersects(e.getRect(), ourRect)) {
+                collisions.push(e);
+            }
+        }
+
+        return collisions;
     },
 
     startingGame: false,
