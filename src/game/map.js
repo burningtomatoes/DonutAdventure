@@ -1,6 +1,8 @@
 var Map = {
+    STARTING_VELOCITY: 3,
+
     entities: [],
-    velocity: 3,
+    velocity: 0,
     scanlinesSprite: null,
     debugCollisions: false,
     player: null,
@@ -123,7 +125,11 @@ var Map = {
             this.scanlinesSprite = Sprites.load('scanlines');
         }
 
+        $('#gameover').slideUp();
+
         var startGame = function() {
+            Map.velocity = Map.STARTING_VELOCITY;
+
             Score.reset();
             Score.updateUi();
 

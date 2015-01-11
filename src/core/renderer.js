@@ -65,8 +65,9 @@ var Renderer = {
      */
     update: function() {
         Camera.update();
-        Keyboard.update();
         Map.update();
+        Score.update();
+        Keyboard.update();
     },
 
     /**

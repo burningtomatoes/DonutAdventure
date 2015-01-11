@@ -73,6 +73,12 @@ var Score = {
         }
     },
 
+    update: function() {
+        if (this.isGameOver && Keyboard.wasKeyPressed(KeyEvent.DOM_VK_SPACE)) {
+            Map.newGame();
+        }
+    },
+
     gameOver: function(reason) {
         if (this.isGameOver) {
             return;
@@ -83,11 +89,12 @@ var Score = {
         Map.velocity = 0;
 
         var $gameOver = $('#gameover');
-        $gameOver.find('h2').html(reason);
+        $gameOver.find('.reason').html(reason);
         $gameOver.slideDown();
     },
 
     reset: function() {
+        this.isGameOver = false;
         this.current = 0;
         this.donuts = 0;
         this.veggie = 0;
