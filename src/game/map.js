@@ -3,6 +3,7 @@ var Map = {
     velocity: 3,
     scanlinesSprite: null,
     debugCollisions: false,
+    player: null,
 
     add: function(e) {
         this.entities.push(e);
@@ -51,10 +52,9 @@ var Map = {
     },
 
     draw: function(ctx) {
-        var entities = this.entities.length;
+        var entitiesCount = this.entities.length;
 
-        for (var i = 0; i < entities; i++) {
-            var e = this.entities[i];
+        var renderEntity = function(e) {
             e.draw(ctx);
 
             if (this.debugCollisions && e.getRect) {
@@ -66,6 +66,21 @@ var Map = {
                 ctx.strokeStyle = 'red';
                 ctx.stroke();
             }
+        }.bind(this);
+
+        for (var i = 0; i < entitiesCount; i++) {
+            var e = this.entities[i];
+
+            if (e === Map.player) {
+                // Player always renders last (on top)
+                continue;
+            }
+
+            renderEntity(e);
+        }
+
+        if (Map.player != null) {
+            renderEntity(Map.player);
         }
 
         // Scanlines effect
@@ -114,7 +129,8 @@ var Map = {
 
             this.clear();
             this.add(new Floor());
-            this.add(new Player());
+            this.player = new Player();
+            this.add(this.player);
 
             Renderer.$canvas.delay(100).fadeIn('slow');
             this.startingGame = false;
@@ -123,7 +139,7 @@ var Map = {
         if (Renderer.$canvas.is(':visible')) {
             Renderer.$canvas.fadeOut('slow', function() {
                 startGame();
-            })
+            });
         } else {
             startGame();
         }
