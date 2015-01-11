@@ -28,6 +28,8 @@ var Player = Entity.extend({
 
             this.burpBuildup++;
             this.omnomTimer = 10;
+
+            Score.addDonut();
         }
 
 

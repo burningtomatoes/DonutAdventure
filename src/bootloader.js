@@ -9,6 +9,7 @@ $(document).ready(function() {
 
     Keyboard.bind();
     Mouse.bind();
+    Score.init();
 
     Sprites.preload();
     Sfx.preload();
