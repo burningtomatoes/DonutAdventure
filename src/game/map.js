@@ -3,6 +3,8 @@ var Map = {
 
     entities: [],
     velocity: 0,
+    posY: 0,
+    lastPosY: 0,
     scanlinesSprite: null,
     debugCollisions: false,
     player: null,
@@ -24,6 +26,7 @@ var Map = {
     },
 
     update: function() {
+
         var entities = this.entities.length;
 
         for (var i = 0; i < entities; i++) {
@@ -40,17 +43,29 @@ var Map = {
         if (Map.velocity > 0) {
             if (Math.random() >= 0.99) {
                 var donut = new Donut();
-                donut.posX = MathHelper.clamp(Math.round(Math.random() * Renderer.canvas.width), 16, Renderer.canvas.width - 16 - donut.width);
+                donut.posX = MathHelper.clamp(Math.round(Math.random() * Renderer.canvas.width), 16 + 48, Renderer.canvas.width - 16 - donut.width - 48);
                 donut.posY = -donut.height;
                 this.add(donut);
             }
             else if (Math.random() >= 0.99) {
                 var carrot = new Carrot();
-                carrot.posX = MathHelper.clamp(Math.round(Math.random() * Renderer.canvas.width), 16, Renderer.canvas.width - 16 - carrot.width);
+                carrot.posX = MathHelper.clamp(Math.round(Math.random() * Renderer.canvas.width), 16 + 48, Renderer.canvas.width - 16 - carrot.width - 48);
                 carrot.posY = -carrot.height;
                 this.add(carrot);
             }
         }
+
+        // Spawn shelves every 100px (shelf height)
+        var diff = this.posY - this.lastPosY;
+
+        if (diff >= 100) {
+            this.add(new Shelf(false));
+            this.add(new Shelf(true));
+            this.lastPosY = this.posY;
+        }
+
+        // Track Y Pos
+        this.posY += this.velocity;
     },
 
     draw: function(ctx) {
@@ -128,7 +143,9 @@ var Map = {
         $('#gameover').slideUp();
 
         var startGame = function() {
-            Map.velocity = Map.STARTING_VELOCITY;
+            this.velocity = Map.STARTING_VELOCITY;
+            this.posY = 0;
+            this.lastPosY = 0;
 
             Score.reset();
             Score.updateUi();

@@ -28,5 +28,11 @@ var Sprites = {
         this.load('player');
         this.load('donut');
         this.load('carrot');
+
+        this.load('shelving_unit_1');
+        this.load('shelving_unit_2');
+        this.load('shelving_unit_3');
+        this.load('shelving_unit_4');
+        this.load('shelving_unit_5');
     }
 };
