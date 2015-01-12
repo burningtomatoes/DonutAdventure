@@ -18,6 +18,7 @@ var Donut = Pickup.extend({
 
         player.burpBuildup++;
         player.omnomTimer = 10;
+        player.disgusted = false;
 
         Score.addDonut();
 

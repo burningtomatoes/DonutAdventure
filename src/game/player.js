@@ -9,6 +9,7 @@ var Player = Entity.extend({
 
     burpBuildup: 0,
     omnomTimer: 0,
+    disgusted: false,
 
     sfxRunning: null,
 
@@ -41,7 +42,10 @@ var Player = Entity.extend({
             this.omnomTimer--;
 
             if (this.omnomTimer <= 0) {
-                if (this.burpBuildup > 3) {
+                if (this.disgusted) {
+                    Sfx.ugh();
+                    this.disgusted = false;
+                } else if (this.burpBuildup > 3) {
                     Sfx.burp();
                     this.burpBuildup = 0;
                 } else {

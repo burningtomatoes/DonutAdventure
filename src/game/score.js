@@ -84,6 +84,8 @@ var Score = {
             return;
         }
 
+        Map.player.omnomTimer = -1;
+
         this.isGameOver = true;
 
         Map.velocity = 0;

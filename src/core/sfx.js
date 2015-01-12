@@ -8,6 +8,7 @@ var Sfx = {
         this.load('burp');
         this.load('running');
         this.load('puke');
+        this.load('ugh');
     },
 
     load: function(soundId) {
@@ -37,5 +38,6 @@ var Sfx = {
     pickupVeggie: function ()   { this.play('pickup_veggie'); },
     omNom: function()           { this.play('omnom'); },
     burp: function()            { this.play('burp'); },
-    puke: function()            { this.play('puke'); }
+    puke: function()            { this.play('puke'); },
+    ugh: function()             { this.play('ugh'); }
 };

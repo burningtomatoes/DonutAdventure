@@ -17,7 +17,8 @@ var Carrot = Pickup.extend({
         Sfx.pickupVeggie();
 
         player.burpBuildup = -1;
-        player.omnomTimer = -1;
+        player.omnomTimer = 10;
+        player.disgusted = true;
 
         Score.addVeggie();
 
