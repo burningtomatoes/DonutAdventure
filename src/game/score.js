@@ -8,6 +8,7 @@ var Score = {
         var updateLoop = function() {
             if (!this.isGameOver) {
                 this.addScore(10);
+                Map.velocity += 0.01;
             }
             this.updateUi();
         }.bind(this);
