@@ -68,11 +68,11 @@ var Player = Entity.extend({
         }
 
         /** Player input **/
-        if (Keyboard.isKeyDown(KeyEvent.DOM_VK_LEFT) && this.posX > 16) {
+        if ((Keyboard.isKeyDown(KeyEvent.DOM_VK_LEFT) || Keyboard.isKeyDown(KeyEvent.DOM_VK_A)) && this.posX > 16) {
             this.posX -= Map.velocity * 2;
         }
 
-        if (Keyboard.isKeyDown(KeyEvent.DOM_VK_RIGHT) && this.posX < Renderer.canvas.width - 16 - this.width) {
+        if ((Keyboard.isKeyDown(KeyEvent.DOM_VK_RIGHT) || Keyboard.isKeyDown(KeyEvent.DOM_VK_D)) && this.posX < Renderer.canvas.width - 16 - this.width) {
             this.posX += Map.velocity * 2;
         }
 
