@@ -15,6 +15,8 @@ $(document).ready(function() {
     Sfx.preload();
 
     Map.newGame();
+
+    $('canvas').focus();
 });
 
 function isCanvasSupported(){
