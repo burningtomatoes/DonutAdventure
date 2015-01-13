@@ -86,7 +86,7 @@ var Score = {
 
         if (this.updateLoopTime <= 0) {
             if (!this.isGameOver) {
-                this.addScore(10);
+                this.addScore(10 * (Map.velocity - Map.STARTING_VELOCITY));
             }
 
             this.updateUi();
