@@ -58,7 +58,7 @@ var Score = {
 
     addDonut: function() {
         this.donuts++;
-        this.addScore(100);
+        this.addScore(100 * (Map.velocity - Map.STARTING_VELOCITY));
     },
 
     addVeggie: function() {
@@ -67,7 +67,7 @@ var Score = {
         }
 
         this.veggie++;
-        this.addScore(-250);
+        this.addScore(-250 * (Map.velocity - Map.STARTING_VELOCITY));
 
         if (this.veggie >= 5 && !this.isGameOver) {
             Map.player.puke();
