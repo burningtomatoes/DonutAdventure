@@ -33,6 +33,18 @@ var Shelf = Entity.extend({
     },
 
     draw: function(ctx) {
-        ctx.drawImage(this.sprite, 0, 0, this.width, this.height, this.posX, this.posY, this.width, this.height);
+        ctx.save();
+
+        if (this.right) {
+            // Configure canvas to mirror
+            ctx.translate(this.posX + this.width, this.posY);
+            ctx.scale(-1, 1);
+        } else {
+            ctx.translate(this.posX, this.posY);
+        }
+
+        ctx.drawImage(this.sprite, 0, 0, this.width, this.height, 0, 0, this.width, this.height);
+
+        ctx.restore();
     }
 });
