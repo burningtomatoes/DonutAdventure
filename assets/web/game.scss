@@ -83,6 +83,7 @@ canvas {
   z-index: 90001;
   text-shadow: 0 1px 1px #000;
   background: rgba(0, 0, 0, 0.25);
+  display: none;
 
   #speed {
     float: left;
@@ -183,4 +184,79 @@ span.key {
   background: rgba(0, 0, 0, 0.5);
   padding: 2px 5px;
   display: inline-block;
+}
+
+#dim {
+  display: none;
+  position: fixed;
+  z-index: 8888888;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  h1 {
+    font-family: "Munro", monospace;
+    font-size: 48px;
+    padding-top: 25px;
+    font-weight: normal;
+
+    img {
+      vertical-align: -4px;
+      padding-right: 4px;
+    }
+  }
+}
+#letter {
+  display: none;
+  height: 600px;
+  width: 533px;
+  background-image: url('../sprites/letter.png');
+  position: fixed;
+  z-index: 9999999;
+  bottom: 50px;
+  margin-left: 50%;
+  left: (-533px) / 2;
+  color: #000;
+  font-family: "Munro", monospace;
+  text-align: left;
+  padding: 20px;
+  font-weight: normal !important;
+  font-size: 24px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.35);
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .continue {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: #555;
+
+    .key {
+      color: #fff;
+    }
+  }
+}
+
+#burningtomato {
+  $height: 455px;
+  display: none;
+  font-family: "Munro", monospace;
+  height: $height;
+  top: 50%;
+  margin-top: -($height / 2) - 50;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  right: 0;
+
+  h1 {
+    font-weight: normal;
+    font-size: 46px;
+  }
 }

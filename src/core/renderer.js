@@ -67,6 +67,7 @@ var Renderer = {
         Camera.update();
         Map.update();
         Score.update();
+        Letter.update();
         Keyboard.update();
     },
 

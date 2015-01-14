@@ -8,6 +8,7 @@ var Map = {
     scanlinesSprite: null,
     debugCollisions: false,
     player: null,
+    active: false,
 
     add: function(e) {
         this.entities.push(e);
@@ -129,6 +130,25 @@ var Map = {
 
     startingGame: false,
 
+    prepareWorld: function() {
+        if (this.scanlinesSprite == null) {
+            this.scanlinesSprite = Sprites.load('scanlines');
+        }
+
+        this.velocity = 0;
+
+        this.add(new Floor());
+
+        for (var i = 0; i < 100; i++) {
+            var donut = new Donut();
+            donut.posX = MathHelper.clamp(Math.round(Math.random() * Renderer.canvas.width), 16 + 48, Renderer.canvas.width - 16 - donut.width - 48);
+            donut.posY = Math.round(Math.random() * Renderer.canvas.height);
+            this.add(donut);
+        }
+
+        Renderer.$canvas.delay(100).fadeIn('slow');
+    },
+
     newGame: function() {
         if (this.startingGame) {
             return;
@@ -146,6 +166,7 @@ var Map = {
             this.velocity = Map.STARTING_VELOCITY;
             this.posY = 0;
             this.lastPosY = 0;
+            this.active = true;
 
             Score.reset();
             Score.updateUi();

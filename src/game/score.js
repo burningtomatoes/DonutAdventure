@@ -11,6 +11,15 @@ var Score = {
     },
 
     updateUi: function() {
+        var $hud = $('#hud');
+
+        if (!Map.active) {
+            $hud.hide();
+            return;
+        }
+
+        $hud.show();
+
         $('#score').text(this.getString());
 
         var $fiveADay = $('#fiveaday');
@@ -76,6 +85,10 @@ var Score = {
     },
 
     update: function() {
+        if (!Map.active) {
+            return;
+        }
+
         if (this.isGameOver && Keyboard.wasKeyPressed(KeyEvent.DOM_VK_SPACE)) {
             Map.newGame();
         }
