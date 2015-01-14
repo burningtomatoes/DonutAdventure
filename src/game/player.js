@@ -151,6 +151,17 @@ var Player = Entity.extend({
         if (this.falling) {
             ctx.drawImage(this.spriteFalling, 0, 0, this.width, this.height, this.posX, this.posY - 5, this.width, this.height);
         } else {
+            if (Score.scoreStreak > 1) {
+                var textPosX = this.posX + (this.width / 2);
+                var textPosY = this.posY - 5;
+
+                ctx.font = '24px Munro';
+                ctx.fillStyle = '#000';
+                ctx.fillText('x' + Score.scoreStreak, textPosX + 1, textPosY + 1); // shadow
+                ctx.fillStyle = Score.scoreStreak > 10 ? 'red' : 'yellow';
+                ctx.fillText('x' + Score.scoreStreak, textPosX, textPosY);
+            }
+
             ctx.drawImage(this.spriteShadow, 0, 0, this.width, this.height, this.posX, this.posY + 5, this.width, this.height);
             ctx.drawImage(this.spriteBody, 0, 0, this.width, this.height, this.posX + this.movementBob, this.posY, this.width, this.height);
         }

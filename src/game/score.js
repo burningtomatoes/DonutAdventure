@@ -5,6 +5,8 @@ var Score = {
     isGameOver: false,
     updateLoopTime: 0,
     speedIncrementTime: 0,
+    scoreStreak: 0,
+    scoreStreakCooldown: 0,
 
     init: function() {
         this.updateUi();
@@ -67,7 +69,10 @@ var Score = {
 
     addDonut: function() {
         this.donuts++;
-        this.addScore(100 * (Map.velocity - Map.STARTING_VELOCITY));
+        this.addScore(100 * (Map.velocity - Map.STARTING_VELOCITY) * (1.0 + (this.scoreStreak / 5)));
+
+        this.scoreStreak++;
+        this.scoreStreakCooldown = 90; // 1.5s or so
     },
 
     addVeggie: function() {
@@ -96,6 +101,14 @@ var Score = {
 
         if (this.updateLoopTime > 0) {
             this.updateLoopTime--;
+        }
+
+        if (this.scoreStreakCooldown > 0) {
+            this.scoreStreakCooldown--;
+        }
+
+        if (this.scoreStreakCooldown <= 0) {
+            this.scoreStreak = 0;
         }
 
         if (this.updateLoopTime <= 0) {
