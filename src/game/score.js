@@ -80,6 +80,7 @@ var Score = {
 
         if (this.veggie >= 5 && !this.isGameOver) {
             Map.player.puke();
+            Map.velocity = 0;
             this.gameOver("Watch out for your five a day! It keeps the doctor away!<br />(That's not what we want)");
         }
     },
@@ -124,8 +125,6 @@ var Score = {
         Map.player.omnomTimer = -1;
 
         this.isGameOver = true;
-
-        Map.velocity = 0;
 
         var $gameOver = $('#gameover');
         $gameOver.find('.reason').html(reason);

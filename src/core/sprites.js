@@ -26,6 +26,8 @@ var Sprites = {
         this.load('shadow_carrot');
 
         this.load('player');
+        this.load('player_down');
+
         this.load('donut');
         this.load('carrot');
 
@@ -34,5 +36,8 @@ var Sprites = {
         this.load('shelving_unit_3');
         this.load('shelving_unit_4');
         this.load('shelving_unit_5');
+
+        this.load('spillage');
+        this.load('cardboard_box');
     }
 };

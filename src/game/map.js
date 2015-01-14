@@ -48,11 +48,19 @@ var Map = {
                 donut.posY = -donut.height;
                 this.add(donut);
             }
-            else if (Math.random() >= 0.99) {
+
+            if (Math.random() >= 0.99) {
                 var carrot = new Carrot();
                 carrot.posX = MathHelper.clamp(Math.round(Math.random() * Renderer.canvas.width), 16 + 48, Renderer.canvas.width - 16 - carrot.width - 48);
                 carrot.posY = -carrot.height;
                 this.add(carrot);
+            }
+
+            if (Math.random() >= 0.99) {
+                var obstacle = new Obstacle();
+                obstacle.posX = MathHelper.clamp(Math.round(Math.random() * Renderer.canvas.width), 16 + 48, Renderer.canvas.width - 16 - obstacle.width - 48);
+                obstacle.posY = -obstacle.height;
+                this.add(obstacle);
             }
         }
 

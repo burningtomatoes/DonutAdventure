@@ -64,7 +64,6 @@ var Renderer = {
      * This function is responsible for performing all calculations, before the frame is drawn.
      */
     update: function() {
-        Camera.update();
         Map.update();
         Score.update();
         Letter.update();
