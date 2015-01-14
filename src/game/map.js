@@ -182,6 +182,8 @@ var Map = {
                 // We are starting for the first time. Queue the background music, and let's ride.
                 Music.loopSound('chiptopia.mp3');
                 this.active = true;
+
+                $('#tutorial').delay(1000).slideDown().delay(10000).slideUp();
             }
 
             Score.reset();
