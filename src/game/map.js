@@ -42,7 +42,7 @@ var Map = {
 
         // Spawn random donuts and carrots
         if (Map.velocity > 0) {
-            if (Math.random() >= 0.99) {
+            if (Math.random() >= 0.975) {
                 var donut = new Donut();
                 donut.posX = MathHelper.clamp(Math.round(Math.random() * Renderer.canvas.width), 16 + 48, Renderer.canvas.width - 16 - donut.width - 48);
                 donut.posY = -donut.height;
