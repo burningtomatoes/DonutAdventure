@@ -154,6 +154,9 @@ var Map = {
             this.add(donut);
         }
 
+        // Begin ambient sounds
+        Music.loopSound('supermarket_ambient.mp3');
+
         Renderer.$canvas.delay(100).fadeIn('slow');
     },
 
@@ -174,7 +177,12 @@ var Map = {
             this.velocity = Map.STARTING_VELOCITY;
             this.posY = 0;
             this.lastPosY = 0;
-            this.active = true;
+
+            if (!this.active) {
+                // We are starting for the first time. Queue the background music, and let's ride.
+                Music.loopSound('chiptopia.mp3');
+                this.active = true;
+            }
 
             Score.reset();
             Score.updateUi();
