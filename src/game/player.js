@@ -37,6 +37,7 @@ var Player = Entity.extend({
         }
 
         if (falling && !Score.isGameOver) {
+            Sfx.tripup();
             Score.gameOver('You have fallen, brave warrior.<br />Watch out for rubbish.');
         }
 
@@ -131,6 +132,7 @@ var Player = Entity.extend({
 
             if (Map.velocity <= 0) {
                 Map.velocity = 0;
+                Sfx.faceplant();
                 this.puke();
             }
         }

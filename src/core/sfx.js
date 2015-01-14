@@ -11,6 +11,8 @@ var Sfx = {
         this.load('ugh');
         this.load('letter');
         this.load('burningtomato');
+        this.load('tripup');
+        this.load('faceplant');
     },
 
     load: function(soundId) {
@@ -42,5 +44,7 @@ var Sfx = {
     burp: function()            { this.play('burp'); },
     puke: function()            { this.play('puke'); },
     ugh: function()             { this.play('ugh'); },
-    letter: function()          { this.player('letter'); }
+    letter: function()          { this.play('letter'); },
+    tripup: function()          { this.play('tripup'); },
+    faceplant: function()       { this.play('faceplant'); }
 };
