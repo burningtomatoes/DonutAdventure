@@ -1,4 +1,4 @@
-Shooty game
+Donut Adventure
 =======
 
 About the challenge
